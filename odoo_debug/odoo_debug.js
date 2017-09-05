@@ -12,7 +12,7 @@ function toggleDebug(tab, asset){
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    toggleDebug(tab);
+    toggleDebug(tab, asset=1);
 });
 
 function getCurrentTabUrl(callback) {
@@ -25,6 +25,17 @@ function getCurrentTabUrl(callback) {
         callback(tab);
     });
 }
+
+chrome.tabs.onActivated.addListener(function(tabId, changeInfo, tab) {
+	chrome.tabs.getSelected(null,function(tab) {
+	      var CurrentUrl = new URL(tab.url);
+	      if (CurrentUrl.searchParams.has('debug')){
+	          chrome.browserAction.setIcon({'path': 'debug_on.png'});
+	      }else {
+	          chrome.browserAction.setIcon({'path': 'debug_off.png'});
+	      }
+	   });
+});
 
 chrome.commands.onCommand.addListener(function(command) {
     getCurrentTabUrl(function(tab) {
