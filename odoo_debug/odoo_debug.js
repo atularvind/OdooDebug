@@ -11,8 +11,26 @@ function toggleDebug(tab, asset){
     chrome.tabs.update(tab.id, {url: debug_url.href});
 }
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-    toggleDebug(tab, asset=1);
+function singleClick(tab) {
+	toggleDebug(tab, asset=1);
+}
+
+function doubleClick(tab) {
+	toggleDebug(tab, asset='asset');
+}
+var cc = 0;
+chrome.browserAction.onClicked.addListener(function(tab){
+	cc++;
+    if (cc === 1) {
+        sct = setTimeout(function() {
+        	cc = 0;
+            singleClick(tab);
+        }, 400);
+    } else if (cc === 2) {
+        clearTimeout(sct);
+        cc = 0;
+        doubleClick(tab);
+    }
 });
 
 function getCurrentTabUrl(callback) {
