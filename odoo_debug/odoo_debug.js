@@ -18,6 +18,18 @@ function singleClick(tab) {
 function doubleClick(tab) {
 	toggleDebug(tab, asset='asset');
 }
+
+function getCurrentTabUrl(callback) {
+    var queryInfo = {
+      active: true,
+      currentWindow: true
+    };
+    chrome.tabs.query(queryInfo, function(tabs) {
+        var tab = tabs[0];
+        callback(tab);
+    });
+}
+
 var cc = 0;
 chrome.browserAction.onClicked.addListener(function(tab){
 	cc++;
@@ -32,17 +44,6 @@ chrome.browserAction.onClicked.addListener(function(tab){
         doubleClick(tab);
     }
 });
-
-function getCurrentTabUrl(callback) {
-    var queryInfo = {
-      active: true,
-      currentWindow: true
-    };
-    chrome.tabs.query(queryInfo, function(tabs) {
-        var tab = tabs[0];
-        callback(tab);
-    });
-}
 
 chrome.tabs.onActivated.addListener(function(tabId, changeInfo, tab) {
 	chrome.tabs.getSelected(null,function(tab) {
@@ -59,6 +60,13 @@ chrome.commands.onCommand.addListener(function(command) {
     getCurrentTabUrl(function(tab) {
         if (command == 'toggle-odoo-debug-asset'){
             toggleDebug(tab, asset='asset');
+        }
+        else if(command == 'edit'){
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.executeScript(tab.id,{code: 'var action = "etfk";'}, function() {
+                    chrome.tabs.executeScript(tab.id, {file: 'content.js'});
+                });
+            });
         }
         else{
             toggleDebug(tab, asset=1);

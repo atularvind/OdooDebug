@@ -41,6 +41,16 @@
               "linux": "Ctrl+Shift+Period"
           },
            "description": "Toggle Odoo Debug"
+      },
+      "edit":{
+        "suggested_key":{
+              "default": "Alt+Shift+E",
+              "windows": "Alt+Shift+E",
+              "mac": "Alt+Shift+E",
+              "chromeos": "Alt+Shift+E",
+              "linux": "Alt+Shift+E"
+        },
+        "description": "Edit View(Tree/Form/Kanban)"
       }
   },
   "permissions": [
