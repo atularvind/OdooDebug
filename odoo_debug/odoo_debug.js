@@ -45,15 +45,15 @@ chrome.browserAction.onClicked.addListener(function(tab){
     }
 });
 
-chrome.tabs.onActivated.addListener(function(tabId, changeInfo, tab) {
-	chrome.tabs.getSelected(null,function(tab) {
-	      var CurrentUrl = new URL(tab.url);
-	      if (CurrentUrl.searchParams.has('debug')){
-	          chrome.browserAction.setIcon({'path': 'debug_on.png'});
-	      }else {
-	          chrome.browserAction.setIcon({'path': 'debug_off.png'});
-	      }
-	   });
+chrome.tabs.onUpdated.addListener(function(tab) {
+    chrome.tabs.getSelected(null,function(tab) {
+        var TabUrl = new URL(tab.url);
+        if (TabUrl.searchParams.has('debug')){
+            chrome.browserAction.setIcon({'path': 'debug_on.png'});
+        }else {
+            chrome.browserAction.setIcon({'path': 'debug_off.png'});
+        }
+    });
 });
 
 chrome.commands.onCommand.addListener(function(command) {
