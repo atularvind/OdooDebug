@@ -45,7 +45,7 @@ function getCurrentTabUrl(callback) {
 }
 
 function isValidURL(str) {
-	if (str !== undefined){return false;}
+	if (str === undefined){return false;}
 	var pattern = new RegExp('^(https?:\\/\\/)?'+ 
 	'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ 
 	'((\\d{1,3}\\.){3}\\d{1,3}))'+ 
