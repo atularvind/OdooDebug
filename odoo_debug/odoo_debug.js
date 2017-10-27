@@ -44,15 +44,40 @@ function getCurrentTabUrl(callback) {
     });
 }
 
-chrome.tabs.onActivated.addListener(function(tabId, changeInfo, tab) {
-	chrome.tabs.getSelected(null,function(tab) {
-	      var CurrentUrl = new URL(tab.url);
-	      if (CurrentUrl.searchParams.has('debug')){
-	          chrome.browserAction.setIcon({'path': 'debug_on.png'});
-	      }else {
-	          chrome.browserAction.setIcon({'path': 'debug_off.png'});
-	      }
-	   });
+function isValidURL(str) {
+	if (str !== undefined){return false;}
+	var pattern = new RegExp('^(https?:\\/\\/)?'+ 
+	'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ 
+	'((\\d{1,3}\\.){3}\\d{1,3}))'+ 
+	'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
+	'(\\?[;&a-z\\d%_.~+=-]*)?'+ 
+	'(\\#[-a-z\\d_]*)?$','i'); 
+	return pattern.test(str);
+}
+
+function changeIcon() {
+    chrome.tabs.getSelected(null, function(tab) {
+        if (isValidURL(tab.url)) {
+            var CurrentUrl = new URL(tab.url);
+            if (CurrentUrl.searchParams.has('debug')) {
+                chrome.browserAction.setIcon({
+                    'path': 'debug_on.png'
+                });
+            } else {
+                chrome.browserAction.setIcon({
+                    'path': 'debug_off.png'
+                });
+            }
+        }
+    });
+}
+
+chrome.tabs.onActivated.addListener(function(tab) {
+	changeIcon();
+});
+
+chrome.tabs.onUpdated.addListener(function(tab) {
+	changeIcon();
 });
 
 chrome.commands.onCommand.addListener(function(command) {
