@@ -3,7 +3,7 @@
 
   "name": "Odoo Debug",
   "description": "Super Simple Extension To Toggle Odoo Developer Mode Using Keyboard Shortcuts (Ctrl+.)",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Atul Arvind",
   "homepage_url": "https://atularvind.com",
   "offline_enabled" : true,
@@ -28,7 +28,7 @@
               "windows": "Ctrl+Period",
               "mac": "Command+Period",
               "chromeos": "Ctrl+Period",
-              "linux": "Ctrl+Period"
+              "linux": "Ctrl+Y"
           },
            "description": "Toggle Odoo Debug"
       },
@@ -38,7 +38,7 @@
               "windows": "Ctrl+Shift+Period",
               "mac": "Command+Shift+Period",
               "chromeos": "Ctrl+Shift+Period",
-              "linux": "Ctrl+Shift+Period"
+              "linux": "Ctrl+Shift+Y"
           },
            "description": "Toggle Odoo Debug"
       }
