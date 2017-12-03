@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Odoo Debug",
+  "name": "Odoo Debug Pro",
   "description": "Super Simple Extension To Toggle Odoo Developer Mode Using Keyboard Shortcuts (Ctrl+Y)",
   "version": "1.1.0",
   "author": "Atul Arvind",
