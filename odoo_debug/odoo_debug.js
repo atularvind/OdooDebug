@@ -45,14 +45,7 @@ function getCurrentTabUrl(callback) {
 }
 
 function isValidURL(str) {
-	if (str === undefined){return false;}
-	var pattern = new RegExp('^(https?:\\/\\/)?'+ 
-	'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ 
-	'((\\d{1,3}\\.){3}\\d{1,3}))'+ 
-	'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
-	'(\\?[;&a-z\\d%_.~+=-]*)?'+ 
-	'(\\#[-a-z\\d_]*)?$','i'); 
-	return pattern.test(str);
+	if (str === undefined){return false;}return true;
 }
 
 function changeIcon() {
@@ -73,12 +66,9 @@ function changeIcon() {
 }
 
 chrome.tabs.onActivated.addListener(function(tab) {
-	changeIcon();
+    changeIcon();
 });
 
-chrome.tabs.onUpdated.addListener(function(tab) {
-	changeIcon();
-});
 
 chrome.commands.onCommand.addListener(function(command) {
     getCurrentTabUrl(function(tab) {

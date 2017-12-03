@@ -2,14 +2,14 @@
   "manifest_version": 2,
 
   "name": "Odoo Debug",
-  "description": "Super Simple Extension To Toggle Odoo Developer Mode Using Keyboard Shortcuts (Ctrl+.)",
-  "version": "1.0.9",
+  "description": "Super Simple Extension To Toggle Odoo Developer Mode Using Keyboard Shortcuts (Ctrl+Y)",
+  "version": "1.1.0",
   "author": "Atul Arvind",
   "homepage_url": "https://atularvind.com",
   "offline_enabled" : true,
 
   "browser_action": {
-     "default_title": "Press Ctrl+. To Toggle Odoo Developer Mode.",
+     "default_title": "Press Ctrl+Y To Toggle Odoo Developer Mode.",
      "default_icon": "debug_off.png"
   },
   "background" : {
@@ -24,23 +24,23 @@
   "commands": {
       "toggle-odoo-debug":{
           "suggested_key":{
-              "default": "Ctrl+Period",
-              "windows": "Ctrl+Period",
-              "mac": "Command+Period",
-              "chromeos": "Ctrl+Period",
+              "default": "Ctrl+Y",
+              "windows": "Ctrl+Y",
+              "mac": "Command+Y",
+              "chromeos": "Ctrl+Y",
               "linux": "Ctrl+Y"
           },
            "description": "Toggle Odoo Debug"
       },
       "toggle-odoo-debug-asset":{
           "suggested_key":{
-              "default": "Ctrl+Shift+Period",
-              "windows": "Ctrl+Shift+Period",
-              "mac": "Command+Shift+Period",
-              "chromeos": "Ctrl+Shift+Period",
+              "default": "Ctrl+Shift+Y",
+              "windows": "Ctrl+Shift+Y",
+              "mac": "Command+Shift+Y",
+              "chromeos": "Ctrl+Shift+Y",
               "linux": "Ctrl+Shift+Y"
           },
-           "description": "Toggle Odoo Debug"
+           "description": "Toggle Odoo Debug with assets"
       }
   },
   "permissions": [
