@@ -21,6 +21,9 @@
       "48": "odoo_debug.png",
       "128": "odoo_debug.png"
   },
+  "options_ui": {
+    "page": "options.html"
+  },
   "commands": {
       "toggle-odoo-debug":{
           "suggested_key":{
@@ -42,19 +45,43 @@
           },
            "description": "Toggle Odoo Debug"
       },
-      "edit":{
-        "suggested_key":{
-              "default": "Alt+Shift+E",
-              "windows": "Alt+Shift+E",
-              "mac": "Alt+Shift+E",
-              "chromeos": "Alt+Shift+E",
-              "linux": "Alt+Shift+E"
-        },
-        "description": "Edit View(Tree/Form/Kanban)"
+      "01-editaction":{
+        "description": "Edit Action"
+      },
+      "02-viewfields":{
+        "description": "View Fields"
+      },
+      "03-managefilters":{
+        "description": "Manage Filters"
+      },
+      "04-technicaltranslation":{
+        "description": "Technical Translation"
+      },
+      "05-setdefaults":{
+        "description": "Set Defaults"
+      },
+      "06-viewmetadata":{
+        "description": "View Metadata"
+      },
+      "07-fieldsviewget":{
+        "description": "Fields View Get"
+      },
+      "08-edittreeformkanbanview":{
+        "description": "Edit Tree-Form-Kanban view"
+      },
+      "09-editsearchview":{
+        "description": "Edit Search View"
       }
+
   },
   "permissions": [
     "http://*/",
-    "https://*/"
+    "https://*/",
+    "tabs",
+    "clipboardWrite",
+    "browsingData",
+    "storage",
+    "bookmarks",
+    "sessions"
   ]
 }
