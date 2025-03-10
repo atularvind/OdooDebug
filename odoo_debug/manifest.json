@@ -1,49 +1,62 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "Odoo Debug Pro",
   "description": "Super Simple Extension To Toggle Odoo Developer Mode Using Keyboard Shortcuts (Ctrl+.)",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": "Atul Arvind",
   "homepage_url": "https://atularvind.com",
-  "offline_enabled" : true,
+  "offline_enabled": true,
 
-  "browser_action": {
-     "default_title": "Press Ctrl+. To Toggle Odoo Developer Mode.",
-     "default_icon": "debug_off.png"
+  "action": {
+    "default_title": "Press Ctrl+. To Toggle Odoo Developer Mode.",
+    "default_icon": {
+      "16": "debug_on.png",
+      "32": "debug_on.png",
+      "48": "debug_on.png",
+      "128": "debug_on.png"
+    }
   },
-  "background" : {
-    "scripts" : ["odoo_debug.js"]
+
+  "background": {
+    "service_worker": "background.js"
   },
+
   "icons": {
-      "16": "odoo_debug.png",
-      "32": "odoo_debug.png",
-      "48": "odoo_debug.png",
-      "128": "odoo_debug.png"
+    "16": "debug_on.png",
+    "32": "debug_on.png",
+    "48": "debug_on.png",
+    "128": "debug_on.png"
   },
+
   "commands": {
-      "toggle-odoo-debug":{
-          "suggested_key":{
-              "default": "Ctrl+Period",
-              "windows": "Ctrl+Period",
-              "mac": "Command+Period",
-              "chromeos": "Ctrl+Period",
-              "linux": "Ctrl+Period"
-          },
-           "description": "Toggle Odoo Debug"
+    "toggle-odoo-debug": {
+      "suggested_key": {
+        "default": "Ctrl+Period",
+        "windows": "Ctrl+Period",
+        "mac": "Command+Period",
+        "chromeos": "Ctrl+Period",
+        "linux": "Ctrl+Period"
       },
-      "toggle-odoo-debug-asset":{
-          "suggested_key":{
-              "default": "Ctrl+Shift+Period",
-              "windows": "Ctrl+Shift+Period",
-              "mac": "Command+Shift+Period",
-              "chromeos": "Ctrl+Shift+Period",
-              "linux": "Ctrl+Shift+Period"
-          },
-           "description": "Toggle Odoo Debug with assets"
-      }
+      "description": "Toggle Odoo Debug"
+    },
+    "toggle-odoo-debug-asset": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Period",
+        "windows": "Ctrl+Shift+Period",
+        "mac": "Command+Shift+Period",
+        "chromeos": "Ctrl+Shift+Period",
+        "linux": "Ctrl+Shift+Period"
+      },
+      "description": "Toggle Odoo Debug with assets"
+    }
   },
+
   "permissions": [
+    "activeTab"
+  ],
+
+  "host_permissions": [
     "http://*/",
     "https://*/"
   ]
